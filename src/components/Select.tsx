@@ -4,7 +4,7 @@ import {
   SelectItem,
   SharedSelection,
 } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Props {
   options: string[];
@@ -15,6 +15,11 @@ interface Props {
 
 const Select: React.FC<Props> = ({ options, onSelect, value, placeholder }) => {
   const [selected, setSelected] = useState<Selection>(new Set([value]));
+
+  useEffect(()=>{
+    onSelect(selected)
+  },[selected])
+
   return (
     <NextSelect
       variant="bordered"

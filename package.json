@@ -21,6 +21,7 @@
     "vite": "^6.0.3"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.2",
     "@nextui-org/react": "^2.6.11",
     "@tanstack/react-router": "^1.95.1",
     "@tanstack/router-devtools": "^1.95.1",
