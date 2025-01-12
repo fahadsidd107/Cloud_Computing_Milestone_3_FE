@@ -73,8 +73,7 @@ const CartDrawer = () => {
                     <div className="flex flex-col gap-4">
                       <div className="flex justify-end">
                         <p className="flex items-center text-xl font-semibold">
-                          {" "}
-                          Total: &nbsp; <Euro size={14} /> {totalPrice}
+                          Total: &nbsp; <Euro size={14} /> {totalPrice.toFixed(2)}
                         </p>
                       </div>
                       <Button
