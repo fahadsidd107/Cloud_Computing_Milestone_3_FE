@@ -8,6 +8,7 @@ import {
   Button,
 } from "@nextui-org/react";
 import { ShoppingCart, Trees } from "lucide-react";
+import CartDrawer from "./Cart/CartDrawer";
 
 export default function ResponsiveNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -22,16 +23,7 @@ export default function ResponsiveNavbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button
-            as={Link}
-            color="default"
-            href="#"
-            variant="bordered"
-            startContent={<ShoppingCart size={16} />}
-            size="md"
-          >
-            <span className="hidden xs:block">Cart</span>
-          </Button>
+          <CartDrawer />
         </NavbarItem>
       </NavbarContent>
     </Navbar>

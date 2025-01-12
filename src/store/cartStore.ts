@@ -1,14 +1,8 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { Product } from "./productStore";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  img?: string;
-}
-
-interface CartItem extends Product {
+export interface CartItem extends Product {
   quantity: number;
 }
 
@@ -17,8 +11,8 @@ interface CartStore {
   totalPrice: number;
   totalItemCount: number;
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: number) => void;
-  updateQuantity: (productId: number, quantity: number) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
 }
 
@@ -32,7 +26,7 @@ export const useCartStore = create<CartStore>()(
       // Add to cart (increments quantity if item already in cart)
       addToCart: (product) => {
         const { cart } = get();
-        const existingItemIndex = cart.findIndex((item) => item.id === product.id);
+        const existingItemIndex = cart.findIndex((item) => item.productId === product.productId);
 
         let updatedCart;
         if (existingItemIndex >= 0) {
@@ -52,10 +46,10 @@ export const useCartStore = create<CartStore>()(
         });
       },
 
-      // Remove item by ID
+      // Remove item by productId
       removeFromCart: (productId) => {
         const { cart } = get();
-        const updatedCart = cart.filter((item) => item.id !== productId);
+        const updatedCart = cart.filter((item) => item.productId !== productId);
 
         set({
           cart: updatedCart,
@@ -68,7 +62,7 @@ export const useCartStore = create<CartStore>()(
       updateQuantity: (productId, quantity) => {
         const { cart } = get();
         const updatedCart = cart.map((item) =>
-          item.id === productId ? { ...item, quantity } : item
+          item.productId === productId ? { ...item, quantity } : item
         );
 
         set({

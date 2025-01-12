@@ -10,6 +10,7 @@ import {
 } from "@nextui-org/react";
 import { Euro, Plus } from "lucide-react";
 import autoAnimate from "@formkit/auto-animate";
+import { useCartStore } from "../store/cartStore";
 
 interface Props {
   product: Product;
@@ -18,6 +19,7 @@ interface Props {
 
 const ProductCard: React.FC<Props> = ({ product, onPress }) => {
   const { productId, productName, price, productAdded } = product;
+  const { addToCart } = useCartStore()
   const [isHovered, setisHovered] = useState(false);
 
   const parent = useRef(null)
@@ -64,6 +66,7 @@ const ProductCard: React.FC<Props> = ({ product, onPress }) => {
               color="primary"
               radius="full"
               size="sm"
+              onPress={()=> addToCart(product)}
             >
               <Plus size={14} />
               <span className="text-tiny ">Add to Cart</span>
