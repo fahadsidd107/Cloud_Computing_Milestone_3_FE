@@ -5,16 +5,19 @@ import {
   DrawerContent,
   DrawerFooter,
   DrawerHeader,
+  Link,
   useDisclosure,
 } from "@nextui-org/react";
 import { CreditCard, Euro, ShoppingCart, Trash, X } from "lucide-react";
 import React from "react";
 import Cart from "./Cart";
 import { useCartStore } from "../../store/cartStore";
+import { Router, useNavigate } from "@tanstack/react-router";
 
 const CartDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { clearCart, cart, totalPrice } = useCartStore();
+  const navigate = useNavigate();
   return (
     <>
       <Button
@@ -73,18 +76,24 @@ const CartDrawer = () => {
                     <div className="flex flex-col gap-4">
                       <div className="flex justify-end">
                         <p className="flex items-center text-xl font-semibold">
-                          Total: &nbsp; <Euro size={14} /> {totalPrice.toFixed(2)}
+                          Total: &nbsp; <Euro size={14} />{" "}
+                          {totalPrice.toFixed(2)}
                         </p>
                       </div>
-                      <Button
+                      <Link
+                        as={Button}
                         variant="shadow"
                         color="secondary"
                         fullWidth
                         className="text-white font-semibold"
                         startContent={<CreditCard size={14} />}
+                        onPress={() => {
+                          onClose();
+                          navigate({ to: "/checkout" });
+                        }}
                       >
                         Review Order & Checkout
-                      </Button>
+                      </Link>
                     </div>
                   </div>
                 </DrawerFooter>

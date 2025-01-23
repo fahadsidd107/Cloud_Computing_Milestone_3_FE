@@ -9,14 +9,19 @@ import {
 } from "@nextui-org/react";
 import { ShoppingCart, Trees } from "lucide-react";
 import CartDrawer from "./Cart/CartDrawer";
+import { useNavigate } from "@tanstack/react-router";
 
 export default function ResponsiveNavbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   return (
     <Navbar className="py-4" onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
-        <NavbarBrand className="text-white">
+        <NavbarBrand
+          className="text-white cursor-pointer"
+          onClick={() => navigate({ to: "/" })}
+        >
           <Trees size={48} />
           <p className="ps-2 font-bold text-inherit text-[24px]">LowTech</p>
         </NavbarBrand>
