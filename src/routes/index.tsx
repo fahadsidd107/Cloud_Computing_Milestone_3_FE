@@ -3,9 +3,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useProductStore } from "../store/productStore";
 import ProductCatalogue from "../components/ProductCatalogue";
 import { Button } from "@heroui/react";
-import { Filter } from "lucide-react";
 import SearchAutocomplete from "../components/Sorting/SearchAutocomplete";
 import Sorting from "../components/Sorting/Sorting";
+import FilterPopover from "../components/Filter/FilterPopover";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -29,13 +29,7 @@ function HomeComponent() {
         </span>
         <div className="flex justify-end gap-4 items-center">
           <SearchAutocomplete products={products} />
-          <Button
-            size="sm"
-            variant="bordered"
-            startContent={<Filter size={14} />}
-          >
-            Filter
-          </Button>
+          <FilterPopover />
           <Sorting />
         </div>
       </div>

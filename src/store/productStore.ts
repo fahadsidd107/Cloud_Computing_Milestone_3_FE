@@ -30,6 +30,7 @@ interface ProductStore {
   setQuery: (query: string) => void; // Delete a product by ID
   setSorting: (sorting: SortingOptions) => void;
   setFilters: (filters: FilterOptions) => void;
+  getCategories: () => string[];
 }
 
 export const useProductStore = create<ProductStore>((set, get) => ({
@@ -137,5 +138,9 @@ export const useProductStore = create<ProductStore>((set, get) => ({
     set({
       filters,
     });
+  },
+  getCategories: () => {
+    const state = get();
+    return [...new Set(state.products.map((product) => product.category))];
   },
 }));
