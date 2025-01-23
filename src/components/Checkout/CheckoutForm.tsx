@@ -95,9 +95,6 @@ const CheckoutForm = memo(() => {
 
   return (
     <div className="flex flex-col h-full gap-4">
-      <h1 className="text-[28px] text-white border-b border-b-white/40 pb-2 mb-2">
-        Checkout
-      </h1>
       <p className="text-[16px] text-white/60 mb-2">Shipping Information</p>
       <Formik
         initialValues={initialValues}
@@ -127,15 +124,23 @@ const CheckoutForm = memo(() => {
                 ))}
               </div>
             ))}
-            <AddressRadio />
-            <PaymentRadio />
-            <div className="flex flex-col gap-4"></div>
+
+            <div className="flex flex-col gap-4 py-2">
+              <AddressRadio />
+              <PaymentRadio />
+            </div>
             <p className="text-[16px] text-white/60">Billing Address</p>
             <Checkbox defaultSelected isDisabled color="secondary">
               Is your billing address same as shipping address?
             </Checkbox>
-            <Button fullWidth type="submit">
-              Submit
+            <Button
+              fullWidth
+              type="submit"
+              variant="shadow"
+              color="secondary"
+              className="text-white font-semibold my-4"
+            >
+              Checkout
             </Button>
           </Form>
         )}

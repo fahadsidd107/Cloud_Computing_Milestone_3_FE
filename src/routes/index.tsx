@@ -23,14 +23,16 @@ function HomeComponent() {
 
   return (
     <main className="flex flex-col px-6">
-      <div className="flex border-b-1 justify-between border-white mt-10 mb-5 pb-2 items-center">
-        <span className="text-white text-[24px] mb-2">
+      <div className="flex flex-col md:flex-row border-b border-white mt-10 mb-5 pb-2 items-start md:items-center justify-between">
+        <span className="text-white text-[24px] mb-4 md:mb-0">
           Showing {products.length.toString()} items.
         </span>
-        <div className="flex justify-end gap-4 items-center">
+        <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full md:w-auto">
           <SearchAutocomplete products={products} />
-          <FilterPopover />
-          <Sorting />
+          <div className="flex gap-3">
+            <FilterPopover />
+            <Sorting />
+          </div>
         </div>
       </div>
       <ProductCatalogue products={products} rows={5} filterBy="" sortBy="" />

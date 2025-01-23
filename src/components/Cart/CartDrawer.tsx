@@ -27,6 +27,7 @@ const CartDrawer = () => {
         startContent={<ShoppingCart size={16} />}
         size="md"
         onPress={onOpen}
+        onTouchStart={onOpen}
       >
         <span className="hidden xs:block">Cart</span>
       </Button>
@@ -37,7 +38,7 @@ const CartDrawer = () => {
         backdrop="blur"
         hideCloseButton
       >
-        <DrawerContent className="bg-black text-white">
+        <DrawerContent className="bg-black text-white z-100">
           {(onClose) => (
             <>
               <DrawerHeader className="flex flex-col gap-1 pt-5">
