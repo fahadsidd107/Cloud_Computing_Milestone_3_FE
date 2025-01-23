@@ -1,4 +1,4 @@
-import { Autocomplete, AutocompleteItem, Input } from "@nextui-org/react";
+import { Autocomplete, AutocompleteItem, Input } from "@heroui/react";
 import React from "react";
 import { Product, useProductStore } from "../../store/productStore";
 import { Search } from "lucide-react";

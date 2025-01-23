@@ -5,7 +5,7 @@ import {
   CardBody,
   Image,
   Slider,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import {
   ArrowLeft,
   ArrowRightFromLine,

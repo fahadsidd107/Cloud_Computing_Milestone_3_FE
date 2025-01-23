@@ -2,7 +2,7 @@ import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useProductStore } from "../store/productStore";
 import ProductCatalogue from "../components/ProductCatalogue";
-import { Button } from "@nextui-org/react";
+import { Button } from "@heroui/react";
 import { Filter } from "lucide-react";
 import SearchAutocomplete from "../components/Sorting/SearchAutocomplete";
 import Sorting from "../components/Sorting/Sorting";

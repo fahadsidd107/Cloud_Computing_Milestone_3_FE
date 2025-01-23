@@ -1,4 +1,4 @@
-import { Button, Checkbox, Input, InputProps } from "@nextui-org/react";
+import { Button, Checkbox, Input, InputProps } from "@heroui/react";
 import React, { memo } from "react";
 import PaymentRadio from "./PaymentRadio";
 import * as Yup from "yup";

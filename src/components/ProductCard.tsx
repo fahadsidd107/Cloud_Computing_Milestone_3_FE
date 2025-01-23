@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
   Image,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { Euro, Plus } from "lucide-react";
 import autoAnimate from "@formkit/auto-animate";
 import { useCartStore } from "../store/cartStore";

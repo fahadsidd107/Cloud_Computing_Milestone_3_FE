@@ -7,7 +7,7 @@ import {
   DrawerHeader,
   Link,
   useDisclosure,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { CreditCard, Euro, ShoppingCart, Trash, X } from "lucide-react";
 import React from "react";
 import Cart from "./Cart";
@@ -80,8 +80,7 @@ const CartDrawer = () => {
                           {totalPrice.toFixed(2)}
                         </p>
                       </div>
-                      <Link
-                        as={Button}
+                      <Button
                         variant="shadow"
                         color="secondary"
                         fullWidth
@@ -93,7 +92,7 @@ const CartDrawer = () => {
                         }}
                       >
                         Review Order & Checkout
-                      </Link>
+                      </Button>
                     </div>
                   </div>
                 </DrawerFooter>

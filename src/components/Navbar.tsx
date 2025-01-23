@@ -4,7 +4,7 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import { Trees } from "lucide-react";
 import CartDrawer from "./Cart/CartDrawer";
 import { useNavigate } from "@tanstack/react-router";

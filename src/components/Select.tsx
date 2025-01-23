@@ -3,7 +3,7 @@ import {
   Selection,
   SelectItem,
   SharedSelection,
-} from "@nextui-org/react";
+} from "@heroui/react";
 import React, { useEffect, useState } from "react";
 
 interface Props {

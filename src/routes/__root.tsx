@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { NextUIProvider } from "@nextui-org/react";
+import { HeroUIProvider } from "@heroui/react";
 import ResponsiveNavbar from "../components/Navbar";
 import "../../src/index.css";
 
@@ -11,7 +11,7 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <NextUIProvider>
+    <HeroUIProvider>
       <ResponsiveNavbar />
       <div className="flex justify-center max-w-full">
         <div className="max-w-[1024px] h-full w-full">
@@ -19,6 +19,6 @@ function RootComponent() {
         </div>
       </div>
       {/* <TanStackRouterDevtools position="bottom-right" /> */}
-    </NextUIProvider>
+    </HeroUIProvider>
   );
 }

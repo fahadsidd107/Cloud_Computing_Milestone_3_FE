@@ -1,4 +1,4 @@
-import {RadioGroup, Radio, cn, RadioProps} from "@nextui-org/react";
+import {RadioGroup, Radio, cn, RadioProps} from "@heroui/react";
 import { CreditCard, LaptopMinimalCheck } from "lucide-react";
 
 export const CustomRadio = (props:RadioProps) => {

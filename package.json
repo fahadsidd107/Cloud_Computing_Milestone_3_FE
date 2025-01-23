@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.2",
-    "@nextui-org/react": "^2.6.11",
+    "@heroui/react": "^2.6.14",
     "@tanstack/react-router": "^1.95.1",
     "@tanstack/router-devtools": "^1.95.1",
     "formik": "^2.4.6",
