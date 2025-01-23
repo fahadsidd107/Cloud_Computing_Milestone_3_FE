@@ -1,85 +1,83 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { Product } from "../store/productStore";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Image,
-} from "@heroui/react";
+import { Button, Card, CardBody, Image } from "@heroui/react";
 import { Euro, Plus } from "lucide-react";
-import autoAnimate from "@formkit/auto-animate";
 import { useCartStore } from "../store/cartStore";
 
 interface Props {
   product: Product;
-  onPress: (productId: string) => void;
+  productsDate: string[];
 }
 
-const ProductCard: React.FC<Props> = ({ product, onPress }) => {
-  const { productId, productName, price, productAdded } = product;
-  const { addToCart } = useCartStore()
-  const [isHovered, setisHovered] = useState(false);
+const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
+  const {
+    productName,
+    price,
+    productAdded,
+    description,
+    category,
+    stockCount,
+  } = product;
+  const { addToCart } = useCartStore();
 
-  const parent = useRef(null)
-  
-    useEffect(() => {
-      parent.current && autoAnimate(parent.current)
-    }, [parent])
-  
+  const isNew = productsDate
+    .sort((a, b) => new Date(b).getTime() - new Date(a).getTime())
+    .slice(0, 2)
+    .includes(productAdded);
+
   return (
-    <Card
-      isFooterBlurred
-      className="w-full h-[250px] col-span-12 sm:col-span-5"
-      isHoverable
-      onMouseEnter={() => setisHovered(true)}
-      onMouseLeave={() => setisHovered(false)}
-    >
-      <CardHeader className="absolute z-10  flex-row items-start justify-between bg-white/20">
-        <span
-          className="text-tiny uppercase font-bold
-        bg-gradient-to-r from-red-500 to-purple-900 bg-clip-text text-transparent
-        "
-        >
-          New
-        </span>
-        <div className="flex items-center">
-          <Euro size={14} className="text-white/80" />
-          <span className="text-tiny text-purple-900 uppercase font-bold">
-            {price}
-          </span>
-        </div>
-      </CardHeader>
-      <Image
-        removeWrapper
-        alt="Card example background"
-        className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
-        src="https://nextui.org/images/card-example-6.jpeg"
-      />
-      <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between p-0 min-h-14">
-        <div ref={parent} className="w-full h-full flex items-center justify-center">
-          {isHovered ? (
-            <Button
-              className="m-2"
-              variant="shadow"
-              color="primary"
-              radius="full"
-              size="sm"
-              onPress={()=> addToCart(product)}
-            >
-              <Plus size={14} />
-              <span className="text-tiny ">Add to Cart</span>
-            </Button>
-          ) : (
-            <div className="m-4 w-full h-full">
-              <p className="text-black font-semibold text-center text-small">
-                {productName}
-              </p>
+    <Card isBlurred className="border-none bg-[#131313] text-white" shadow="sm">
+      <CardBody>
+        <div className="flex flex-col md:grid md:grid-cols-12 gap-6 md:gap-4 items-center">
+          <div className="relative flex justify-center w-full md:col-span-3">
+            <Image
+              alt="Product image"
+              className="object-cover aspect-square"
+              height={150}
+              shadow="md"
+              src="https://nextui.org/images/card-example-6.jpeg"
+              width={150}
+            />
+          </div>
+
+          <div className="flex flex-col w-full md:col-span-9">
+            <div className="flex flex-col gap-1">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center gap-2">
+                  <p className="font-semibold">{productName}</p>
+                  {isNew && (
+                    <span className="text-tiny uppercase font-bold bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">
+                      New
+                    </span>
+                  )}
+                </div>
+                <p className="text-large text-white/90 flex items-center">
+                  <Euro size={14} />
+                  {price}
+                </p>
+              </div>
+              <p className="text-small text-white/40">{category}</p>
+
+              <p className="text-small text-white/80 mt-2">{description}</p>
+
+              <div className="flex justify-end items-center gap-4 mt-4">
+                <div className="flex flex-col gap-1 text-small text-white/60">
+                  <p>{stockCount} units in stock</p>
+                </div>
+                <Button
+                  color="secondary"
+                  variant="shadow"
+                  size="sm"
+                  onPress={() => addToCart(product)}
+                >
+                  <Plus size={14} />
+                  <span className="text-tiny">Add to Cart</span>
+                </Button>
+              </div>
             </div>
-          )}
+          </div>
         </div>
-      </CardFooter>
+      </CardBody>
     </Card>
   );
 };

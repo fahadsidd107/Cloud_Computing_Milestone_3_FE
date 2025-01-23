@@ -16,19 +16,19 @@ const ProductCatalogue: React.FC<Props> = ({
   filterBy,
   products,
 }) => {
-  const parent = useRef(null)
+  const parent = useRef(null);
 
   useEffect(() => {
-    parent.current && autoAnimate(parent.current)
-  }, [parent])
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
 
   return (
-    <div ref={parent} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 w-full">
+    <div ref={parent} className="flex flex-col gap-5 w-full">
       {products.map((product) => (
         <div key={`product${product.productId}`}>
           <ProductCard
             product={product}
-            onPress={(productId) => console.log(productId)}
+            productsDate={products.map((product) => product.productAdded)}
           />
         </div>
       ))}

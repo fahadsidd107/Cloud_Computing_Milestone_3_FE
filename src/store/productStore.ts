@@ -8,6 +8,7 @@ export interface Product {
   price: number;
   productAdded: string;
   category: string;
+  description: string;
 }
 
 export type SortingOptions = "Price Ascending" | "Price Descending" | "New";

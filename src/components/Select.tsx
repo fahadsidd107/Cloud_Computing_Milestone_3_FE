@@ -16,14 +16,18 @@ interface Props {
 const Select: React.FC<Props> = ({ options, onSelect, value, placeholder }) => {
   const [selected, setSelected] = useState<Selection>(new Set([value]));
 
-  useEffect(()=>{
-    onSelect(selected)
-  },[selected])
+  useEffect(() => {
+    onSelect(selected);
+  }, [selected]);
 
   return (
     <NextSelect
       variant="bordered"
       className="max-w-[150px]"
+      classNames={{
+        listbox: "bg-[#131313] text-white",
+        popoverContent: "bg-[#131313] text-white",
+      }}
       size={"sm"}
       aria-label={placeholder}
       selectedKeys={selected}

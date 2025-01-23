@@ -5,7 +5,8 @@
         "stockCount": 245,
         "price": 417.22,
         "productAdded": "2024-10-06",
-        "category": "Table"
+        "category": "Table",
+        "description": "This is a beautiful oak dining table that is perfect for your home. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P002",
@@ -13,7 +14,8 @@
         "stockCount": 150,
         "price": 299.99,
         "productAdded": "2024-10-07",
-        "category": "Table"
+        "category": "Table",
+        "description" : "Wooden coffee table with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P003",
@@ -21,7 +23,8 @@
         "stockCount": 320,
         "price": 89.50,
         "productAdded": "2024-10-08",
-        "category": "Shelf"
+        "category": "Shelf",
+        "description" : "Wooden shelves with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P004",
@@ -29,7 +32,8 @@
         "stockCount": 180,
         "price": 129.99,
         "productAdded": "2024-10-09",
-        "category": "Other"
+        "category": "Other",
+        "description" : "Wooden jewelry box with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P005",
@@ -37,7 +41,8 @@
         "stockCount": 75,
         "price": 199.95,
         "productAdded": "2024-10-10",
-        "category": "Frame"
+        "category": "Frame",
+        "description" : "Mirror frame with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P006",
@@ -45,7 +50,8 @@
         "stockCount": 400,
         "price": 45.00,
         "productAdded": "2024-10-11",
-        "category": "Other"
+        "category": "Other",
+        "description" : "Wooden birdhouse with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P007",
@@ -53,7 +59,8 @@
         "stockCount": 220,
         "price": 79.99,
         "productAdded": "2024-10-12",
-        "category": "Clock"
+        "category": "Clock",
+        "description" : "Wooden wall clock with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P008",
@@ -61,7 +68,8 @@
         "stockCount": 130,
         "price": 159.99,
         "productAdded": "2024-10-13",
-        "category": "Other"
+        "category": "Other",
+        "description" : "Wooden wine rack with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P009",
@@ -69,7 +77,8 @@
         "stockCount": 500,
         "price": 29.99,
         "productAdded": "2024-10-14",
-        "category": "Other"
+        "category": "Other",
+        "description" : "Wooden coasters with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     },
     {
         "productId": "P010",
@@ -77,6 +86,7 @@
         "stockCount": 90,
         "price": 349.99,
         "productAdded": "2024-10-15",
-        "category": "Table"
+        "category": "Table",
+        "description" : "Oak side table with a beautiful finish. It is made from the highest quality oak and is sure to last a lifetime."
     }
 ]
