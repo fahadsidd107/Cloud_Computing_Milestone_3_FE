@@ -7,13 +7,19 @@ export interface Product {
   stockCount: number;
   price: number;
   productAdded: string;
+  category: string;
 }
 
-export type SortingOptions = "Price Ascending" | "Price Descending" | "New"
+export type SortingOptions = "Price Ascending" | "Price Descending" | "New";
+
+interface FilterOptions {
+  category: string[];
+  priceRange: number[];
+}
 interface ProductStore {
   products: Product[]; // List of products
   isFetching: boolean;
-  filters: string[];
+  filters: FilterOptions;
   sorting: SortingOptions;
   query: string;
   fetchProducts: () => Promise<void>; // Fetch all products
@@ -22,13 +28,17 @@ interface ProductStore {
   deleteProduct: (id: string) => void; // Delete a product by ID
   getProducts: () => Product[]; // Delete a product by ID
   setQuery: (query: string) => void; // Delete a product by ID
-  setSorting: (sorting :SortingOptions) => void
+  setSorting: (sorting: SortingOptions) => void;
+  setFilters: (filters: FilterOptions) => void;
 }
 
 export const useProductStore = create<ProductStore>((set, get) => ({
   products: [],
   isFetching: false,
-  filters: [],
+  filters: {
+    category: [],
+    priceRange: [],
+  },
   sorting: "New",
   query: "",
 
@@ -94,6 +104,20 @@ export const useProductStore = create<ProductStore>((set, get) => ({
       );
     }
 
+    if (state.filters.category.length > 0) {
+      products = products.filter((product) =>
+        state.filters.category.includes(product.category)
+      );
+    }
+
+    if (state.filters.priceRange.length > 0) {
+      products = products.filter(
+        (product) =>
+          product.price >= state.filters.priceRange[0] &&
+          product.price <= state.filters.priceRange[1]
+      );
+    }
+
     return products;
   },
 
@@ -102,10 +126,16 @@ export const useProductStore = create<ProductStore>((set, get) => ({
       query,
     });
   },
-  
+
   setSorting: (sorting) => {
     set({
       sorting,
+    });
+  },
+
+  setFilters: (filters) => {
+    set({
+      filters,
     });
   },
 }));

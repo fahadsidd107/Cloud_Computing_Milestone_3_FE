@@ -1,13 +1,11 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { Product, useProductStore } from "../store/productStore";
+import { useProductStore } from "../store/productStore";
 import ProductCatalogue from "../components/ProductCatalogue";
-import Select from "../components/Select";
-import { sortingOptions } from "../constants";
-import { Autocomplete, AutocompleteItem, Button, Input } from "@nextui-org/react";
-import { Filter, Search } from "lucide-react";
-import SearchAutocomplete from "../components/FilterAndSorting/SearchAutocomplete";
-import Sorting from "../components/FilterAndSorting/Sorting";
+import { Button } from "@nextui-org/react";
+import { Filter } from "lucide-react";
+import SearchAutocomplete from "../components/Sorting/SearchAutocomplete";
+import Sorting from "../components/Sorting/Sorting";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -15,7 +13,7 @@ export const Route = createFileRoute("/")({
 
 function HomeComponent() {
   const { getProducts, fetchProducts } = useProductStore();
-  const products = getProducts()
+  const products = getProducts();
 
   React.useEffect(() => {
     if (Array.isArray(products) && products.length === 0) {
@@ -30,7 +28,7 @@ function HomeComponent() {
           Showing {products.length.toString()} items.
         </span>
         <div className="flex justify-end gap-4 items-center">
-           <SearchAutocomplete products={products} />
+          <SearchAutocomplete products={products} />
           <Button
             size="sm"
             variant="bordered"
@@ -38,7 +36,7 @@ function HomeComponent() {
           >
             Filter
           </Button>
-          <Sorting/>
+          <Sorting />
         </div>
       </div>
       <ProductCatalogue products={products} rows={5} filterBy="" sortBy="" />
