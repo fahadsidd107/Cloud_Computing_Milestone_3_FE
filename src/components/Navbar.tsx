@@ -4,10 +4,8 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
-  Button,
 } from "@nextui-org/react";
-import { ShoppingCart, Trees } from "lucide-react";
+import { Trees } from "lucide-react";
 import CartDrawer from "./Cart/CartDrawer";
 import { useNavigate } from "@tanstack/react-router";
 
