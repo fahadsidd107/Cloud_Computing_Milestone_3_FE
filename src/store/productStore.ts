@@ -1,9 +1,10 @@
 import { create } from "zustand";
+import { backendUrl } from "../constants";
 
 // Define the Product type
 export interface Product {
   productId: string;
-  productName: string;
+  name: string;
   stockCount: number;
   price: number;
   productAdded: string;
@@ -47,7 +48,8 @@ export const useProductStore = create<ProductStore>((set, get) => ({
   fetchProducts: async () => {
     try {
       set({ isFetching: true });
-      const response = await fetch("../../data/products.json");
+      const url = backendUrl + "/products";
+      const response = await fetch(url);
       const data = await response.json();
 
       set({ products: data, isFetching: false });
@@ -88,7 +90,7 @@ export const useProductStore = create<ProductStore>((set, get) => ({
       const query = state.query.toLowerCase();
 
       const filteredProducts = products.filter((product) =>
-        product.productName.toLowerCase().includes(query)
+        product.name.toLowerCase().includes(query)
       );
 
       products = [...filteredProducts];

@@ -10,14 +10,8 @@ interface Props {
 }
 
 const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
-  const {
-    productName,
-    price,
-    productAdded,
-    description,
-    category,
-    stockCount,
-  } = product;
+  const { name, price, productAdded, description, category, stockCount } =
+    product;
   const { addToCart } = useCartStore();
 
   const isNew = productsDate
@@ -44,7 +38,7 @@ const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
             <div className="flex flex-col gap-1">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-2">
-                  <p className="font-semibold">{productName}</p>
+                  <p className="font-semibold">{name}</p>
                   {isNew && (
                     <span className="text-tiny uppercase font-bold bg-gradient-to-r from-red-500 to-purple-500 bg-clip-text text-transparent">
                       New

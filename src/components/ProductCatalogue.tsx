@@ -10,12 +10,7 @@ interface Props {
   products: Product[];
 }
 
-const ProductCatalogue: React.FC<Props> = ({
-  rows,
-  sortBy,
-  filterBy,
-  products,
-}) => {
+const ProductCatalogue: React.FC<Props> = ({ products }) => {
   const parent = useRef(null);
 
   useEffect(() => {

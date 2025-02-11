@@ -22,10 +22,10 @@ import React from "react";
 import { CartItem, useCartStore } from "../../store/cartStore";
 
 const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
-  const { productName, quantity, stockCount, price, productId } = cartItem;
+  const { name, quantity, stockCount, price, productId } = cartItem;
   const { removeFromCart, updateQuantity } = useCartStore();
 
-  const handleUpdateQuantity = (productId:string, quantity:number) => {
+  const handleUpdateQuantity = (productId: string, quantity: number) => {
     if (quantity === 0) {
       removeFromCart(productId);
     } else {
@@ -55,7 +55,7 @@ const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
           <div className="flex flex-col col-span-6 md:col-span-8">
             <div className="flex flex-col gap-1">
               <div className="flex justify-between items-center">
-                <p className="font-semibold">{productName}</p>
+                <p className="font-semibold">{name}</p>
                 <Button
                   size="sm"
                   isIconOnly

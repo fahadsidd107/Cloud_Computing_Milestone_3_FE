@@ -1,7 +1,7 @@
 [
     {
         "productId": "P001",
-        "productName": "Oak Dining Table",
+        "name": "Oak Dining Table",
         "stockCount": 245,
         "price": 417.22,
         "productAdded": "2024-10-06",
@@ -10,7 +10,7 @@
     },
     {
         "productId": "P002",
-        "productName": "Wooden Coffee Table",
+        "name": "Wooden Coffee Table",
         "stockCount": 150,
         "price": 299.99,
         "productAdded": "2024-10-07",
@@ -19,7 +19,7 @@
     },
     {
         "productId": "P003",
-        "productName": "Wooden Shelves",
+        "name": "Wooden Shelves",
         "stockCount": 320,
         "price": 89.50,
         "productAdded": "2024-10-08",
@@ -28,7 +28,7 @@
     },
     {
         "productId": "P004",
-        "productName": "Wooden Jewelry Box",
+        "name": "Wooden Jewelry Box",
         "stockCount": 180,
         "price": 129.99,
         "productAdded": "2024-10-09",
@@ -37,7 +37,7 @@
     },
     {
         "productId": "P005",
-        "productName": "Mirror Frame",
+        "name": "Mirror Frame",
         "stockCount": 75,
         "price": 199.95,
         "productAdded": "2024-10-10",
@@ -46,7 +46,7 @@
     },
     {
         "productId": "P006",
-        "productName": "Wooden Birdhouse",
+        "name": "Wooden Birdhouse",
         "stockCount": 400,
         "price": 45.00,
         "productAdded": "2024-10-11",
@@ -55,7 +55,7 @@
     },
     {
         "productId": "P007",
-        "productName": "Wooden Wall Clock",
+        "name": "Wooden Wall Clock",
         "stockCount": 220,
         "price": 79.99,
         "productAdded": "2024-10-12",
@@ -64,7 +64,7 @@
     },
     {
         "productId": "P008",
-        "productName": "Wooden Wine Rack",
+        "name": "Wooden Wine Rack",
         "stockCount": 130,
         "price": 159.99,
         "productAdded": "2024-10-13",
@@ -73,7 +73,7 @@
     },
     {
         "productId": "P009",
-        "productName": "Wooden Coasters",
+        "name": "Wooden Coasters",
         "stockCount": 500,
         "price": 29.99,
         "productAdded": "2024-10-14",
@@ -82,7 +82,7 @@
     },
     {
         "productId": "P010",
-        "productName": "Oak Side Table",
+        "name": "Oak Side Table",
         "stockCount": 90,
         "price": 349.99,
         "productAdded": "2024-10-15",

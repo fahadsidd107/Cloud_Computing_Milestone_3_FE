@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomeComponent() {
-  const { getProducts, fetchProducts } = useProductStore();
+  const { getProducts, fetchProducts, isFetching } = useProductStore();
   const products = getProducts();
 
   React.useEffect(() => {
