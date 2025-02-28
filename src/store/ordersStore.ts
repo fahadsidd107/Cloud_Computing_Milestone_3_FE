@@ -25,7 +25,7 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
   fetchOrders: async () => {
     try {
       set({ isFetching: true });
-      const url = backendUrl + "/order";
+      const url = backendUrl + "/orders";
       const response = await fetch(url);
       const data = await response.json();
 

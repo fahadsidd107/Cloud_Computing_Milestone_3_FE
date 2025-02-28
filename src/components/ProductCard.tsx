@@ -1,6 +1,6 @@
 import React from "react";
 import { Product } from "../store/productStore";
-import { Button, Card, CardBody, Image } from "@heroui/react";
+import { Button, Card, CardBody, Image, Tooltip } from "@heroui/react";
 import { Euro, Plus } from "lucide-react";
 import { useCartStore } from "../store/cartStore";
 
@@ -65,15 +65,28 @@ const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
                 <div className="flex flex-col gap-1 text-small text-white/60">
                   <p>{stock_count} units in stock</p>
                 </div>
-                <Button
-                  color="secondary"
-                  variant="shadow"
-                  size="sm"
-                  onPress={() => addToCart(product)}
+                <Tooltip
+                  content={stock_count === 0 ? "Out of stock" : "Add to cart"}
+                  showArrow={true}
+                  isDisabled={stock_count !== 0}
                 >
-                  <Plus size={14} />
-                  <span className="text-tiny">Add to Cart</span>
-                </Button>
+                  <Button
+                    color="secondary"
+                    variant="shadow"
+                    size="sm"
+                    className={
+                      stock_count === 0 ? "opacity-50 cursor-not-allowed" : ""
+                    }
+                    onPress={() => {
+                      if (stock_count !== 0) {
+                        addToCart(product);
+                      }
+                    }}
+                  >
+                    <Plus size={14} />
+                    <span className="text-tiny">Add to Cart</span>
+                  </Button>
+                </Tooltip>
               </div>
             </div>
           </div>

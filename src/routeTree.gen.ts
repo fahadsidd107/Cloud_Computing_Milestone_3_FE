@@ -11,12 +11,19 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as PayImport } from './routes/pay'
 import { Route as CheckoutImport } from './routes/checkout'
 import { Route as IndexImport } from './routes/index'
 import { Route as AdminOrdersImport } from './routes/admin/orders'
 import { Route as AdminAddProductImport } from './routes/admin/addProduct'
 
 // Create/Update Routes
+
+const PayRoute = PayImport.update({
+  id: '/pay',
+  path: '/pay',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const CheckoutRoute = CheckoutImport.update({
   id: '/checkout',
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckoutImport
       parentRoute: typeof rootRoute
     }
+    '/pay': {
+      id: '/pay'
+      path: '/pay'
+      fullPath: '/pay'
+      preLoaderRoute: typeof PayImport
+      parentRoute: typeof rootRoute
+    }
     '/admin/addProduct': {
       id: '/admin/addProduct'
       path: '/admin/addProduct'
@@ -82,6 +96,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/pay': typeof PayRoute
   '/admin/addProduct': typeof AdminAddProductRoute
   '/admin/orders': typeof AdminOrdersRoute
 }
@@ -89,6 +104,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/pay': typeof PayRoute
   '/admin/addProduct': typeof AdminAddProductRoute
   '/admin/orders': typeof AdminOrdersRoute
 }
@@ -97,22 +113,30 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/checkout': typeof CheckoutRoute
+  '/pay': typeof PayRoute
   '/admin/addProduct': typeof AdminAddProductRoute
   '/admin/orders': typeof AdminOrdersRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/checkout' | '/admin/addProduct' | '/admin/orders'
+  fullPaths: '/' | '/checkout' | '/pay' | '/admin/addProduct' | '/admin/orders'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/checkout' | '/admin/addProduct' | '/admin/orders'
-  id: '__root__' | '/' | '/checkout' | '/admin/addProduct' | '/admin/orders'
+  to: '/' | '/checkout' | '/pay' | '/admin/addProduct' | '/admin/orders'
+  id:
+    | '__root__'
+    | '/'
+    | '/checkout'
+    | '/pay'
+    | '/admin/addProduct'
+    | '/admin/orders'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CheckoutRoute: typeof CheckoutRoute
+  PayRoute: typeof PayRoute
   AdminAddProductRoute: typeof AdminAddProductRoute
   AdminOrdersRoute: typeof AdminOrdersRoute
 }
@@ -120,6 +144,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CheckoutRoute: CheckoutRoute,
+  PayRoute: PayRoute,
   AdminAddProductRoute: AdminAddProductRoute,
   AdminOrdersRoute: AdminOrdersRoute,
 }
@@ -136,6 +161,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/checkout",
+        "/pay",
         "/admin/addProduct",
         "/admin/orders"
       ]
@@ -145,6 +171,9 @@ export const routeTree = rootRoute
     },
     "/checkout": {
       "filePath": "checkout.tsx"
+    },
+    "/pay": {
+      "filePath": "pay.tsx"
     },
     "/admin/addProduct": {
       "filePath": "admin/addProduct.tsx"
