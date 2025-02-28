@@ -86,12 +86,7 @@ const initialValues = {
 };
 
 const CheckoutForm = memo(() => {
-  const handleSubmit = (values: typeof initialValues, errors: any) => {
-    if (errors) {
-      console.log(errors);
-    }
-    console.log(values);
-  };
+  const handleSubmit = (values: typeof initialValues, errors: any) => {};
 
   return (
     <div className="flex flex-col h-full gap-4">

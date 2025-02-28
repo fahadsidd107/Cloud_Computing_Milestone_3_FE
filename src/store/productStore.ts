@@ -3,13 +3,14 @@ import { backendUrl } from "../constants";
 
 // Define the Product type
 export interface Product {
-  productId: string;
+  id: string;
   name: string;
-  stockCount: number;
+  stock_count: number;
   price: number;
   productAdded: string;
   category: string;
   description: string;
+  image_url: string;
 }
 
 export type SortingOptions = "Price Ascending" | "Price Descending" | "New";
@@ -69,9 +70,7 @@ export const useProductStore = create<ProductStore>((set, get) => ({
   updateProduct: (updatedProduct) => {
     set((state) => ({
       products: state.products.map((product) =>
-        product.productId === updatedProduct.productId
-          ? updatedProduct
-          : product
+        product.id === updatedProduct.id ? updatedProduct : product
       ),
     }));
   },
@@ -79,7 +78,7 @@ export const useProductStore = create<ProductStore>((set, get) => ({
   // Delete a product by ID
   deleteProduct: (id) => {
     set((state) => ({
-      products: state.products.filter((product) => product.productId !== id),
+      products: state.products.filter((product) => product.id !== id),
     }));
   },
 

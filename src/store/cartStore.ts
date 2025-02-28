@@ -11,8 +11,8 @@ interface CartStore {
   totalPrice: number;
   totalItemCount: number;
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
+  removeFromCart: (id: string) => void;
+  updateQuantity: (id: string, quantity: number) => void;
   clearCart: () => void;
 }
 
@@ -26,7 +26,9 @@ export const useCartStore = create<CartStore>()(
       // Add to cart (increments quantity if item already in cart)
       addToCart: (product) => {
         const { cart } = get();
-        const existingItemIndex = cart.findIndex((item) => item.productId === product.productId);
+        const existingItemIndex = cart.findIndex(
+          (item) => item.id === product.id
+        );
 
         let updatedCart;
         if (existingItemIndex >= 0) {
@@ -41,34 +43,52 @@ export const useCartStore = create<CartStore>()(
 
         set({
           cart: updatedCart,
-          totalPrice: updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0),
-          totalItemCount: updatedCart.reduce((acc, item) => acc + item.quantity, 0),
+          totalPrice: updatedCart.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+          ),
+          totalItemCount: updatedCart.reduce(
+            (acc, item) => acc + item.quantity,
+            0
+          ),
         });
       },
 
-      // Remove item by productId
-      removeFromCart: (productId) => {
+      // Remove item by id
+      removeFromCart: (id) => {
         const { cart } = get();
-        const updatedCart = cart.filter((item) => item.productId !== productId);
+        const updatedCart = cart.filter((item) => item.id !== id);
 
         set({
           cart: updatedCart,
-          totalPrice: updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0),
-          totalItemCount: updatedCart.reduce((acc, item) => acc + item.quantity, 0),
+          totalPrice: updatedCart.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+          ),
+          totalItemCount: updatedCart.reduce(
+            (acc, item) => acc + item.quantity,
+            0
+          ),
         });
       },
 
       // Update the quantity for a specific product
-      updateQuantity: (productId, quantity) => {
+      updateQuantity: (id, quantity) => {
         const { cart } = get();
         const updatedCart = cart.map((item) =>
-          item.productId === productId ? { ...item, quantity } : item
+          item.id === id ? { ...item, quantity } : item
         );
 
         set({
           cart: updatedCart,
-          totalPrice: updatedCart.reduce((acc, item) => acc + item.price * item.quantity, 0),
-          totalItemCount: updatedCart.reduce((acc, item) => acc + item.quantity, 0),
+          totalPrice: updatedCart.reduce(
+            (acc, item) => acc + item.price * item.quantity,
+            0
+          ),
+          totalItemCount: updatedCart.reduce(
+            (acc, item) => acc + item.quantity,
+            0
+          ),
         });
       },
 

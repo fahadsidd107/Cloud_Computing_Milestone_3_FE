@@ -22,14 +22,14 @@ import React from "react";
 import { CartItem, useCartStore } from "../../store/cartStore";
 
 const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
-  const { name, quantity, stockCount, price, productId } = cartItem;
+  const { name, quantity, stock_count, price, id, image_url } = cartItem;
   const { removeFromCart, updateQuantity } = useCartStore();
 
-  const handleUpdateQuantity = (productId: string, quantity: number) => {
+  const handleUpdateQuantity = (id: string, quantity: number) => {
     if (quantity === 0) {
-      removeFromCart(productId);
+      removeFromCart(id);
     } else {
-      updateQuantity(productId, quantity);
+      updateQuantity(id, quantity);
     }
   };
 
@@ -47,7 +47,7 @@ const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
               className="object-cover"
               height={100}
               shadow="md"
-              src="https://nextui.org/images/album-cover.png"
+              src={image_url}
               width="100%"
             />
           </div>
@@ -60,14 +60,14 @@ const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
                   size="sm"
                   isIconOnly
                   className="bg-[#131313] text-white"
-                  onPress={() => removeFromCart(productId)}
+                  onPress={() => removeFromCart(id)}
                 >
                   <Trash size={14} />
                 </Button>
               </div>
               <div className="flex justify-between items-center">
                 <p className="text-small text-white/60">
-                  {stockCount} units in stock.
+                  {stock_count} units in stock.
                 </p>
                 <p className="text-large text-white/90 flex items-center">
                   {" "}
@@ -83,7 +83,7 @@ const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
                   size="sm"
                   isIconOnly
                   className="bg-[#131313] text-white"
-                  onPress={() => handleUpdateQuantity(productId, quantity - 1)}
+                  onPress={() => handleUpdateQuantity(id, quantity - 1)}
                 >
                   <Minus size={14} />
                 </Button>
@@ -91,7 +91,7 @@ const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
                   size="sm"
                   isIconOnly
                   className="bg-[#131313] text-white"
-                  onPress={() => handleUpdateQuantity(productId, quantity + 1)}
+                  onPress={() => handleUpdateQuantity(id, quantity + 1)}
                   isDisabled
                 >
                   {quantity}
@@ -100,7 +100,7 @@ const CartCard: React.FC<{ cartItem: CartItem }> = ({ cartItem }) => {
                   size="sm"
                   isIconOnly
                   className="bg-[#131313] text-white"
-                  onPress={() => handleUpdateQuantity(productId, quantity + 1)}
+                  onPress={() => handleUpdateQuantity(id, quantity + 1)}
                 >
                   <Plus size={14} />
                 </Button>

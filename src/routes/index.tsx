@@ -6,6 +6,7 @@ import { Button } from "@heroui/react";
 import SearchAutocomplete from "../components/Sorting/SearchAutocomplete";
 import Sorting from "../components/Sorting/Sorting";
 import FilterPopover from "../components/Filter/FilterPopover";
+import SkeletonCard from "../components/SkeletonCard";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -35,7 +36,7 @@ function HomeComponent() {
           </div>
         </div>
       </div>
-      <ProductCatalogue products={products} rows={5} filterBy="" sortBy="" />
+      <ProductCatalogue products={products} isFetching={isFetching} />
     </main>
   );
 }

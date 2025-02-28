@@ -10,8 +10,15 @@ interface Props {
 }
 
 const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
-  const { name, price, productAdded, description, category, stockCount } =
-    product;
+  const {
+    name,
+    price,
+    productAdded,
+    description,
+    category,
+    stock_count,
+    image_url,
+  } = product;
   const { addToCart } = useCartStore();
 
   const isNew = productsDate
@@ -29,7 +36,7 @@ const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
               className="object-cover aspect-square"
               height={150}
               shadow="md"
-              src="https://nextui.org/images/card-example-6.jpeg"
+              src={image_url}
               width={150}
             />
           </div>
@@ -56,7 +63,7 @@ const ProductCard: React.FC<Props> = ({ product, productsDate }) => {
 
               <div className="flex justify-end items-center gap-4 mt-4">
                 <div className="flex flex-col gap-1 text-small text-white/60">
-                  <p>{stockCount} units in stock</p>
+                  <p>{stock_count} units in stock</p>
                 </div>
                 <Button
                   color="secondary"
