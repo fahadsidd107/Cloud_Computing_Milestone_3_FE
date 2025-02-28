@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-computing-milestone-3-fe-web-service
+  labels:
+    app: cloud-computing-milestone-3-fe-web
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3001
+  selector:
+    app: cloud-computing-milestone-3-fe-web
